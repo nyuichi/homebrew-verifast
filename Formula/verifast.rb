@@ -4,6 +4,8 @@ class Verifast < Formula
   license "MIT"
   version "25.11"
 
+  depends_on :macos
+
   livecheck do
     url :stable
     strategy :github_latest
