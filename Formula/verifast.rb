@@ -7,7 +7,7 @@ class Verifast < Formula
   depends_on :macos
 
   livecheck do
-    url :stable
+    url :homepage
     strategy :github_latest
   end
 
