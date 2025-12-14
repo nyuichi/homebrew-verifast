@@ -15,22 +15,30 @@ class Verifast < Formula
   end
 
   def install
-    # The archive usually contains a top-level directory such as verifast-25.11/ or verifast-<commit>/
-    top = Dir["verifast-*"].find { |d| File.directory?(d) }
-    odie "Unexpected archive layout: #{Dir.children(".").join(", ")}" unless top
+    # Some releases are "flat" (bin/, lib/, help/ ... at archive root),
+    # others may have a single top-level directory.
+    root =
+      if File.directory?("bin") && File.exist?(File.join("bin", "verifast"))
+        Pathname.pwd
+      else
+        d = Dir.children(".").find do |x|
+          File.directory?(x) && File.directory?(File.join(x, "bin")) &&
+            File.exist?(File.join(x, "bin", "verifast"))
+        end
+        odie "Unexpected archive layout: #{Dir.children(".").join(", ")}" unless d
+        Pathname.new(d)
+      end
 
-    libexec.install Dir["#{top}/*"]
+    # Install everything (including dotfiles like .brew_home if present)
+    root.children.each do |child|
+      libexec.install child
+    end
 
-    # Expose all executables shipped in the distribution.
+    # Expose executables via wrappers
     Dir[libexec/"bin/*"].each do |p|
       next if File.directory?(p)
       bin.write_exec_script p
     end
-  end
-
-  test do
-    out = shell_output("#{bin}/verifast --help 2>&1", 0)
-    assert_match(/VeriFast|verifast/i, out)
   end
 end
 

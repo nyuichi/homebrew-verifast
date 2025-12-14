@@ -1,4 +1,4 @@
-# Nyuichi Verifast
+# Verifast
 
 ## How do I install these formulae?
 
