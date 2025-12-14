@@ -4,6 +4,11 @@ class Verifast < Formula
   license "MIT"
   version "25.11"
 
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
+
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/verifast/verifast/releases/download/25.11/verifast-25.11-macos-aarch.tar.gz"
