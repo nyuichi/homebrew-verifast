@@ -14,6 +14,13 @@ class Verifast < Formula
     end
   end
 
+  on_linux do
+    depends_on arch: :x86_64
+
+    url "https://github.com/verifast/verifast/releases/download/25.11/verifast-25.11-linux.tar.gz"
+    sha256 "990c3cadba7cfc9ef9c19d5f1ff039fd746155164fe4a5ec365c625182400f3e"
+  end
+
   def install
     # Some releases are "flat" (bin/, lib/, help/ ... at archive root),
     # others may have a single top-level directory.
