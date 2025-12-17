@@ -1,22 +1,22 @@
-class Verifast < Formula
+class VerifastAT2507 < Formula
   desc "Modular program verifier for C, Rust and Java using separation logic"
   homepage "https://github.com/verifast/verifast"
-  version "25.11"
+  version "25.07"
   license "MIT"
+
+  keg_only :versioned_formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/verifast/verifast/releases/download/25.11/verifast-25.11-macos-aarch.tar.gz"
-      sha256 "f047f44a5884f57a4ad5177ed7eb6d8681fd9631e59681ae32ed8a3d75378bd5"
+      url "https://github.com/verifast/verifast/releases/download/25.07/verifast-25.07-macos-aarch.tar.gz"
+      sha256 "6129fe538fb0b47ddf57e223dd628d991c74d9c835c991dd65871d5dc56c6d3f"
     else
-      url "https://github.com/verifast/verifast/releases/download/25.11/verifast-25.11-macos.tar.gz"
-      sha256 "cd98518b499825dc51132e45e0a160856d8b61875bd289c3a76cbb51f8dd5e3d"
+      url "https://github.com/verifast/verifast/releases/download/25.07/verifast-25.07-macos.tar.gz"
+      sha256 "7cc1c134f1f794ba1128d83e8c57f72b85bc6dfd2627ec3b13e719c12e210448"
     end
   end
 
   def install
-    # Some releases are "flat" (bin/, lib/, help/ ... at archive root),
-    # others may have a single top-level directory.
     root =
       if File.directory?("bin") && File.exist?(File.join("bin", "verifast"))
         Pathname.pwd
@@ -29,12 +29,10 @@ class Verifast < Formula
         Pathname.new(d)
       end
 
-    # Install everything (including dotfiles like .brew_home if present)
     root.children.each do |child|
       libexec.install child
     end
 
-    # Expose executables via wrappers
     Dir[libexec/"bin/*"].each do |p|
       next if File.directory?(p)
 
