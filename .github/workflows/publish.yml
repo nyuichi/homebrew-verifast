@@ -7,8 +7,11 @@ on:
 
 jobs:
   pr-pull:
-    if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
+    if: github.event.label.name == 'pr-pull'
     runs-on: ubuntu-22.04
+    concurrency:
+      group: pr-pull-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
     permissions:
       actions: read
       checks: read
@@ -17,12 +20,12 @@ jobs:
       pull-requests: write
     steps:
       - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@main
+        uses: Homebrew/actions/setup-homebrew@11e37b59b0ec97a638b659c23418c47a7219304e
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up git
-        uses: Homebrew/actions/git-user-config@main
+        uses: Homebrew/actions/git-user-config@11e37b59b0ec97a638b659c23418c47a7219304e
 
       - name: Pull bottles
         env:
@@ -31,7 +34,7 @@ jobs:
         run: brew pr-pull --debug --tap="$GITHUB_REPOSITORY" "$PULL_REQUEST"
 
       - name: Push commits
-        uses: Homebrew/actions/git-try-push@main
+        uses: Homebrew/actions/git-try-push@11e37b59b0ec97a638b659c23418c47a7219304e
         with:
           branch: main
 
