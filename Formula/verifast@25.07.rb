@@ -45,4 +45,9 @@ class VerifastAT2507 < Formula
       bin.write_exec_script p
     end
   end
+
+  test do
+    output = shell_output("#{bin}/verifast --help 2>&1")
+    assert_match "Usage", output
+  end
 end
