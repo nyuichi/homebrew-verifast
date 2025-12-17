@@ -1,7 +1,6 @@
 class Verifast < Formula
   desc "Modular program verifier for C, Rust and Java using separation logic"
   homepage "https://github.com/verifast/verifast"
-  version "25.11"
   license "MIT"
 
   on_macos do

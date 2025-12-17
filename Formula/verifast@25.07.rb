@@ -1,7 +1,6 @@
 class VerifastAT2507 < Formula
   desc "Modular program verifier for C, Rust and Java using separation logic"
   homepage "https://github.com/verifast/verifast"
-  version "25.07"
   license "MIT"
 
   keg_only :versioned_formula
