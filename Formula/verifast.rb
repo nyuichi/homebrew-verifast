@@ -1,6 +1,9 @@
 class Verifast < Formula
   desc "Modular program verifier for C, Rust and Java using separation logic"
   homepage "https://github.com/verifast/verifast"
+
+  url "https://github.com/verifast/verifast/releases/download/25.11/verifast-25.11-linux.tar.gz"
+  sha256 "990c3cadba7cfc9ef9c19d5f1ff039fd746155164fe4a5ec365c625182400f3e"
   license "MIT"
 
   on_macos do
@@ -15,9 +18,6 @@ class Verifast < Formula
 
   on_linux do
     depends_on arch: :x86_64
-
-    url "https://github.com/verifast/verifast/releases/download/25.11/verifast-25.11-linux.tar.gz"
-    sha256 "990c3cadba7cfc9ef9c19d5f1ff039fd746155164fe4a5ec365c625182400f3e"
   end
 
   def install

@@ -1,6 +1,9 @@
 class VerifastAT2507 < Formula
   desc "Modular program verifier for C, Rust and Java using separation logic"
   homepage "https://github.com/verifast/verifast"
+
+  url "https://github.com/verifast/verifast/releases/download/25.07/verifast-25.07-linux.tar.gz"
+  sha256 "48d2c53b4a6e4ba6bf03bd6303dbd92a02bfb896253c06266b29739c78bad23b"
   license "MIT"
 
   keg_only :versioned_formula
@@ -17,9 +20,6 @@ class VerifastAT2507 < Formula
 
   on_linux do
     depends_on arch: :x86_64
-
-    url "https://github.com/verifast/verifast/releases/download/25.07/verifast-25.07-linux.tar.gz"
-    sha256 "48d2c53b4a6e4ba6bf03bd6303dbd92a02bfb896253c06266b29739c78bad23b"
   end
 
   def install
