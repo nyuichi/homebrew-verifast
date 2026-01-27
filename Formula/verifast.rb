@@ -2,17 +2,17 @@ class Verifast < Formula
   desc "Modular program verifier for C, Rust and Java using separation logic"
   homepage "https://github.com/verifast/verifast"
 
-  url "https://github.com/verifast/verifast/releases/download/25.11/verifast-25.11-linux.tar.gz"
-  sha256 "990c3cadba7cfc9ef9c19d5f1ff039fd746155164fe4a5ec365c625182400f3e"
+  url "https://github.com/verifast/verifast/releases/download/26.01/verifast-26.01-linux.tar.gz"
+  sha256 "13fb7312e7d79076fa6e674d8d3335fb77d9f94749bd65f2d01868ad94dd03eb"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/verifast/verifast/releases/download/25.11/verifast-25.11-macos-aarch.tar.gz"
-      sha256 "f047f44a5884f57a4ad5177ed7eb6d8681fd9631e59681ae32ed8a3d75378bd5"
+      url "https://github.com/verifast/verifast/releases/download/26.01/verifast-26.01-macos-aarch.tar.gz"
+      sha256 "f316062f224b51f0956bf7375f34089558f4847671ef60e13899da6e079caf00"
     else
-      url "https://github.com/verifast/verifast/releases/download/25.11/verifast-25.11-macos.tar.gz"
-      sha256 "cd98518b499825dc51132e45e0a160856d8b61875bd289c3a76cbb51f8dd5e3d"
+      url "https://github.com/verifast/verifast/releases/download/26.01/verifast-26.01-macos.tar.gz"
+      sha256 "5535ed6cb130533bf012ab74b4e4284769d8119ec72650317928e1003fedb544"
     end
   end
 
